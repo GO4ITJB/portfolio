@@ -1,0 +1,9 @@
+// contains all the CSS that handles the layout, such as the container and any grid systems.
+.projects{
+
+  &__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+}

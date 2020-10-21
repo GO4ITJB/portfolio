@@ -1,0 +1,414 @@
+// contained within this file are all your resets, variables, mixins, and any utility classes.
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*, 
+*:before, 
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+  }
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+  
+a{
+    text-decoration: none;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+a[href^="tel"]{
+    color:#fff;
+    text-decoration:none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.container{
+
+  &--about{
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  &--contact{
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.heading{
+  padding: 20px 0;
+  font-size: 2rem;
+  text-align: center;
+  color: #2a2a2a;
+
+  &--projects{
+    padding: 60px 0 40px;
+  }
+
+  &--contact{
+    color: #fff;
+  }
+}
+
+.hero{
+  height: 100vh;
+  background: linear-gradient(-45deg, #122025, #203A43, #122025, #203A43);
+	background-size: 400% 400%;
+  animation: gradient 6s ease infinite;
+  // background-color: #171717;
+
+  &__lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    margin: auto;
+    width: 90vw;
+  }
+
+  &__line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+  }
+
+  &__lines &__line:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+    animation: run 7s 0s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  }
+  &__line:nth-child(1) {
+    margin-left: -25%;
+  }
+  &__line:nth-child(1)::after {
+    animation-delay: 2s;
+  }
+  &__line:nth-child(3) {
+    margin-left: 25%;
+  }
+  &__line:nth-child(3)::after {
+    animation-delay: 2.5s;
+  }
+  &__line:nth-child(4) {
+    margin-left: -50%;
+  }
+  &__line:nth-child(4)::after {
+    animation-delay: 3s;
+  }
+  &__line:nth-child(5) {
+    margin-left: 50%;
+  }
+  &__line:nth-child(5)::after {
+    animation-delay: 3.5s;
+  }
+
+  &__content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__heading{
+    font-size: 1.4rem;
+  }
+
+  &__sub-head{
+    font-size: 1rem;
+    padding: 20px 10px;
+  }
+}
+
+
+//For Hero background
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+// FOR FALING STARS
+@keyframes run {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+.about{
+  padding: 20px 0;
+
+  &__item{
+
+    &--1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1rem;
+      padding: 20px 0;
+    }
+
+    &--2{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__img-border{
+    width: 260px;
+    height: 235px;
+    background: #174d5f;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img{
+    width: 225px;
+    height: 200px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  &__text{
+    text-align: center;
+    padding: 40px 0;
+    color: #585858;
+  }
+
+
+}
+
+.projects{
+  // padding: 40px 0 0;
+
+  &__item{
+    overflow: hidden;
+    position: relative;
+  }  
+
+  &__img{
+    transition: .5s ease;
+  }
+
+  &__overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    font-size: .6rem;
+  }
+
+  &__title{
+    transition: .5s ease;
+    color: #fff;
+  }
+
+  &__copy{
+    opacity: 0;
+    transition: 1s ease;
+    color: yellow;
+  }
+
+  &__item:hover &__img{
+    transform: scale(1.2);
+  }
+  &__item:hover &__copy{
+    opacity: 1;
+  }
+
+  &__item:hover &__title,
+  &__item:hover &__copy{
+    transform: translateY(-10px);
+  }
+}
+
+.contact{
+  background: #203A43;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+
+  &__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+
+  &__name, &__email, &__txtarea{
+    background: #1220254e;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 10px 5px;
+    margin: 3px 0;
+  }
+
+}
+
+.footer{
+  background: #122025;
+  // padding: 20px;
+  height: 30vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  &__top{
+    position: absolute;
+    top: 10px;
+    // right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .4rem;
+    transition: .5s ease;
+
+  }
+  
+  &__top:hover{
+    transform: translateY(-5px)
+  }
+  &__top-icon{
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  &__social{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+  }
+
+  &__link{
+    padding: 10px 20px;
+    font-size: 1.4rem;
+  }
+
+  &__author{
+    position: absolute;
+    bottom: 20px;
+  }
+
+  &__name{
+    color: #fff;
+    font-size: .6rem;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 768px){}
+
+@media screen and (min-width: 992px){}
+
+@media screen and (min-width: 1200px){
+
+  html {
+    font-size: 120%;
+  }
+
+  .container{
+
+    &--about,
+    &--contact{
+      width: 50%;
+    }
+
+  }
+  
+  .about{
+    
+    &__item{
+
+      &--1{
+        // display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        // justify-items: center;
+        // padding: 40px;
+        flex-direction: row;
+      }
+
+      &--2{
+        // width: 70%;
+        margin: 0 auto;
+        padding: 40px 0 0;
+      }
+    }
+    
+    
+
+    &
+
+    &__text{
+      width: 60%;
+      padding: 40px;
+    }
+
+  }
+}
+
+
+
+
+
+
+
