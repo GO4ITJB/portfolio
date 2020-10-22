@@ -1,13 +1,11 @@
-const image = document.querySelector('.hero__img');
-const images = ["img/landing.jpg", "img/1.jpg", "img/2.jpg", "img/3.jpg"];
-let currentPos = 0;
+// Menu links
+const menu = document.getElementById('menu');
+const closeIcon = document.getElementById("nav__toggle");
 
-const changePic = () => {
-    if (++currentPos >= images.length)
-        currentPos = 0;
+menu.addEventListener('click', handleMenuClick);
 
-    image.src = images[currentPos];
+function handleMenuClick(event) {
+  if (event.target instanceof HTMLAnchorElement) {
+    closeIcon.checked = false;
+  }
 }
-
-setInterval(changePic, 750);
-

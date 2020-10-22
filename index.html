@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>Jovica Bumbulovic</title>
   </head>
@@ -21,21 +21,16 @@
 
           <div class="nav__menu-bg">&nbsp;</div>
 
-          <nav class="nav__menu">
+          <nav class="nav__menu" id="menu">
               <ul class="nav__list">
                   <li class="nav__item">
-                      <a href="https://google.com" class="nav__link">Home</a></li>
-                  <li class="nav__item">
-                      <a href="#" class="nav__link">Home</a>
+                      <a href="#about" class="nav__link" >About Me</a>
                   </li>
                   <li class="nav__item">
-                      <a href="#" class="nav__link">home</a>
+                      <a href="#pro" class="nav__link" >projects</a>
                   </li>
                   <li class="nav__item">
-                      <a href="#" class="nav__link">Home</a>
-                  </li>
-                  <li class="nav__item">
-                      <a href="#" class="nav__link">Home</a>
+                      <a href="#cont" class="nav__link" >Get in touch</a>
                   </li>
               </ul>
           </nav>
@@ -65,7 +60,7 @@
       </section>
 
 
-      <section class="about">
+      <section class="about" id="about">
         <div class="container container--about">
           <h2 class="heading heading--about">
             About Me
@@ -198,7 +193,7 @@
         </div>
       </section>
 
-      <section class="contact">
+      <section class="contact" id="cont">
         <div class="container container--contact">
           <h2 class="heading heading--contact">Get in touch</h2>
           <div class="contact__form-container">
@@ -240,5 +235,7 @@
       </div>
     </footer>
 
+
+    <script src="scripts.js"></script>
   </body>
 </html>
