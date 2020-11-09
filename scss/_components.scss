@@ -1,7 +1,7 @@
 // anything reusable such as buttons, navbars, cards etc.
 
 // ******NAV******
-.nav{
+.nav {
   width: 100%;
   padding: 0 2rem;
   position: absolute;
@@ -13,181 +13,211 @@
   height: 70px;
   z-index: 1000;
 
-  &__logo-link{
-      margin-right: auto;
-      text-align: center;
+  &__logo-link {
+    margin-right: auto;
+    text-align: center;
   }
 
-  &__toggler{
-      display: none;
+  &__toggler {
+    display: none;
   }
 
-  &__btn{
-      z-index: 2000;
-      cursor: pointer;
-      //position: absolute;
+  &__btn {
+    z-index: 2000;
+    cursor: pointer;
   }
 
-  &__menu-bg{
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #122025;
-      z-index: 1000;
-      transition: all .7s; // Menu background speed
+  &__background {
+    height: 1px;
+    width: 10px;
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    background-image: radial-gradient(#375f6d, #203a43);
+    // background-image: radial-gradient(#1b2f36, #203a43);
+    border-radius: 50%;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.86, -0.55, 0.265, 1.55); // Menu background speed
   }
 
-  &__menu{
-      height: 100vh;
-      width: 100vw;
-      position: fixed;
-      left: -100%;
-      top: 0;            //Make it dissapear to the top, also change checked value 
-      // right: -100%;   //Make it dissapear to the right, also change checked value
-      //left: -100%;     //Make it dissapear to the left, also change checked value 
-      //bottom: -100%;   //Make it dissapear to the bottom, also change checked value 
+  &__menu {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0; //Make it dissapear to the top, also change checked value
+    right: -100%; //Make it dissapear to the right, also change checked value
+    //left: -100%;     //Make it dissapear to the left, also change checked value
+    //bottom: -100%;   //Make it dissapear to the bottom, also change checked value
 
-      z-index: 1500;
-      opacity: 1;
-      transition: all .8s; // Menu speed
+    z-index: 1500;
+    transition: all 0.5s cubic-bezier(0.86, -0.55, 0.265, 1.55); // Menu speed
   }
 
-  &__list{
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      list-style: none;
-      margin-top: -40px;
-      padding: 0 .5rem;
-      
+  &__list {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    margin-top: -40px;
   }
 
-  &__item{
-      padding: .5rem;
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 1.2rem;
+      color: #fff;
+      padding: 20px 40px;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-decoration: none;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        #fff 50%
+      );
+      background-size: 250%;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: #000;
+      transform: translateX(10px);
+    }
   }
-
-  &__link{
-    text-transform: uppercase;
-      
-      &:link,
-      &:visited{
-          font-size: 1.2rem;
-          color: #fff;
-          font-weight: 600;
-          text-decoration: none;
-          background-size: 250%;  
-          transition: all .5s ease-in-out;
-      }
-
-      &:hover,
-      &:active{
-          background-position: 100%;
-          background-color: #fff;
-          color: #000;  
-          padding: 0 .5rem;
-          transition: all .5s ease-in-out;
-      }
-      
-  }
-
 
   // <----NOW U SEE IT..(magic)..NOW U DON'T---->
-  &__toggler:checked ~ &__menu-bg{
-      height: 100vh;
-      width: 100vw;
+  // ~that is the sibling selector
+  &__toggler:checked ~ &__background {
+    transform: scale(5000);
+    opacity: 1;
   }
 
-  &__toggler:checked ~ &__menu{
-      left: 0;
+  &__toggler:checked ~ &__menu {
+    right: 0;
   }
 
   // <---ICON--->
 
-  &__ham-icon{
-      position: relative;
-      margin-top: .8rem;
+  &__ham-icon {
+    position: relative;
+    margin-top: 8px;
 
-      &,
-      &:before,
-      &:after{
-          width: 1.4rem;
-          height: 1px;
-          background-color: #fff;
-          display: inline-block;
-      }
+    &,
+    &:before,
+    &:after {
+      width: 25px;
+      height: 1px;
+      background-color: #fff;
+      display: inline-block;
+    }
 
-      &:before,
-      &:after{
-          content: "";
-          position: absolute;
-          left: 0;
-      }
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    }
 
-      &:before{top: .6rem;} // Always double up on the space
-      &:after{top: .3rem;}
+    &:before {
+      top: -6px;
+    } // Always double up on the space
+    &:after {
+      top: 6px;
+    }
+  }
 
+  // Line animation
+  &__btn:hover &__ham-icon:before{
+    top: -8px;
   }
   
-}
+  &__btn:hover &__ham-icon:after{
+    top: 8px;
+  }
 
+  &__toggler:checked + &__btn &__ham-icon {
+    background-color: transparent;
+  }
+
+  &__toggler:checked + &__btn {
+    position: fixed;
+  }
+
+  &__toggler:checked + &__btn &__ham-icon:before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__toggler:checked + &__btn &__ham-icon:after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}
 
 // BUTTONS
 .btn {
   border: 1px solid #fff;
   color: #fff;
   padding: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 2px;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  display: block;
 
-    &:hover{
-      background-color: #fff;
-      color: #000;
-    }
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
 
-  &--logo{
+  &--logo {
     padding: 5px;
   }
 
-  &--hero{
+  &--hero {
     z-index: 1;
+    display: inline-block;
   }
 
-  &--form{
+  &--form {
     margin-top: 10px;
     color: #000;
+    background: #fff;
   }
 }
 
 // PROGRESS BAR
-.progress{
+.progress {
   padding: 20px;
   width: 100%;
   background: #fff;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   font-family: Poppins;
 
-  &__bar{
-  margin: 20px 0;
+  &__bar {
+    margin: 20px 0;
 
-    &:first-child{
+    &:first-child {
       margin-top: 0px;
     }
   }
-  &__info{
+  &__info {
     margin-bottom: 5px;
 
-    span{
+    span {
       font-weight: 500;
       font-size: 17px;
       opacity: 0;
@@ -195,59 +225,57 @@
     }
 
     @keyframes showText {
-      100%{
+      100% {
         opacity: 1;
       }
     }
-
   }
 
-    &__line{
-      height: 10px;
-      width: 100%;
-      background: #f0f0f0;
-      position: relative;
+  &__line {
+    height: 10px;
+    width: 100%;
+    background: #f0f0f0;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+      0 1px rgba(255, 255, 255, 0.8);
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+
+    span {
+      height: 100%;
+      position: absolute;
+      border-radius: 10px;
       transform: scaleX(0);
       transform-origin: left;
-      border-radius: 10px;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
-                  0 1px rgba(255,255,255,0.8);
-      animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+      background: linear-gradient(-45deg, #1f647b, #203a43);
+      animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    }
 
-      span{
-        height: 100%;
-        position: absolute;
-        border-radius: 10px;
-        transform: scaleX(0);
-        transform-origin: left;
-        background: linear-gradient(-45deg, #1f647b, #203A43);
-        animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    @keyframes animate {
+      100% {
+        transform: scaleX(1);
       }
+    }
 
-      @keyframes animate {
-        100%{
-          transform: scaleX(1);
-        }
-      }
+    &.html span {
+      width: 90%;
+    }
+    &.css span {
+      width: 85%;
+    }
+    &.javascript span {
+      width: 45%;
+    }
+    &.resp-design span {
+      width: 95%;
+    }
+    &.mysql span {
+      width: 75%;
+    }
 
-      &.html span{
-        width: 80%;
-      }
-      &.css span{
-        width: 80%;
-      }
-      &.javascript span{
-        width: 35%;
-      }
-      &.resp-design span{
-        width: 95%;
-      }
-      &.mysql span{
-        width: 75%;
-      }
-    
-
-    span:before{
+    span:before {
       position: absolute;
       content: "";
       top: -10px;
@@ -262,7 +290,7 @@
       animation: showText2 0.5s 1.5s linear forwards;
     }
 
-    span:after{
+    span:after {
       position: absolute;
       top: -28px;
       right: 0;
@@ -276,75 +304,65 @@
       animation: showText2 0.5s 1.5s linear forwards;
     }
 
-    &.html span:after{
+    &.html span:after {
       content: "Kickass";
     }
-    &.css span:after{
+    &.css span:after {
       content: "Kickass";
     }
-    &.javascript span:before{
+    &.javascript span:before {
       transform: rotateY(180deg);
       right: -5.9px;
     }
-    &.javascript span:after{
+    &.javascript span:after {
       right: -69px;
-      content: "Beginner";
+      content: "Average";
     }
-    &.resp-design span:after{
+    &.resp-design span:after {
       content: "Rockstar";
     }
-    &.mysql span:after{
-      content: "75%";
+    &.mysql span:after {
+      content: "Almost kickass";
     }
 
     @keyframes showText2 {
-      100%{
+      100% {
         opacity: 1;
       }
     }
   }
-
-  
 }
 
+@media screen and (min-width: 740px) {
+  .nav {
+    &__menu {
+      height: 100vh;
+      width: 100vw; // menu width
+    }
 
-@media screen and (min-width: 740px){
+    &__toggler:checked ~ &__menu-bg {
+      height: 100vh;
+      width: 100vw; // menu width
+      transition: all 1s;
+    }
 
-  .nav{
-
-      &__menu{
-          height: 100vh;
-          width: 100vw; // menu width
-      }
-
-      &__toggler:checked ~ &__menu-bg{
-          height: 100vh;
-          width: 100vw; // menu width
-          transition: all 1s;
-      }
-
-      &__link{
-      
-          &:link,
-          &:visited{
-              font-size: 1.5rem;
-          }
-          
-      }
-  }
-
-  .progress{
-
-    &__line{
-
-      &.javascript span:before{
-        transform: unset;
-        right: 0;
-      }
-      &.javascript span:after{
-        right: 0;
+    &__link {
+      &:link,
+      &:visited {
+        font-size: 1.5rem;
       }
     }
   }
 
+  .progress {
+    &__line {
+      &.javascript span:before {
+        transform: unset;
+        right: 0;
+      }
+      &.javascript span:after {
+        right: 0;
+      }
+    }
+  }
 }
