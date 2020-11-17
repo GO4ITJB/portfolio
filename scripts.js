@@ -11,7 +11,7 @@ function handleMenuClick(event) {
 };
 
 // GSAP word animation
-const words = ['Jovica Bumbulovic', 'A gym enthusiast', 'A developer', 'Your next coworker'];
+const words = ['Jovica Bumbulovic','A web developer', 'A gym enthusiast', 'Your next coworker'];
 let cursor = gsap.to('.hero__cursor', {opacity: 0,duration: 1, ease: 'power2.inOut', repeat: -1});
 
 let masterTL = gsap.timeline({repeat: -1, delay: .5});
