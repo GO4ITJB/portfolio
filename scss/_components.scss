@@ -366,3 +366,15 @@
     }
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .nav{
+    &__link {
+      &:link,
+      &:visited {
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+  }
+}
